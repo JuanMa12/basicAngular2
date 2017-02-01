@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<table class="banner">
+<tr>
+    <td><a [routerLink]="['Movies']">Home</a></td>
+    <td><a [routerLink]="['AddMovie']">Add Movie</a></td>
+    <td><a [routerLink]="['Contact']">Contact</a></td>
+</tr>
+</table>
+<router-outlet></router-outlet>
+<movies-footer></movies-footer>

@@ -1,0 +1,34 @@
+<hr>
+<h2>{{dataService}}</h2>
+<p>Favorite Movie</p>
+<ul>
+    <li><img src="{{movie.image}}" alt="" class="img-movie"></li>
+    <li><strong>Movie: </strong>{{movie.title}}</li>
+    <li><strong>Director: </strong>{{movie.made}}</li>
+    <li><strong>Estreno en el: </strong>{{movie.year}}</li>
+</ul>
+<p>
+    Update Title Movie:
+    <input type="text" [(ngModel)]="movie.title">
+</p>
+<hr>
+
+<!-------------------------------------------------------------------------------->
+<p>List the Movies</p>
+
+<button (click)="onShowMovie(true)" [class.hidden]="viewMovie === true">
+    View Movies
+</button>
+<button (click)="onShowMovie(false)" [class.hidden]="viewMovie === false">
+    Hidden Movies
+</button>
+<ul *ngIf="viewMovie === true">
+    <ul *ngFor="#movie of movies">
+        <li (click)="onChangeMovie(movie)"><img src="{{movie.image}}" alt="" class="img-movie"></li>
+        <li (click)="onChangeMovie(movie)"><strong>Movie: </strong><span class="titleHover">{{movie.title}}</span></li>
+        <li><strong>Director: </strong>{{movie.made}}</li>
+        <li *ngIf="movie.year"><strong>Estreno en el: </strong>{{movie.year}}</li>
+        <li><a [routerLink]="['AddMovieOfMovie',{image: movie.image,title: movie.title,made: movie.made,year: movie.year}]">Add Movie Relation</a></li>
+    </ul>
+</ul>
+<hr>
